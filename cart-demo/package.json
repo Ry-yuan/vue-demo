@@ -1,0 +1,21 @@
+{
+  "name": "mystyle",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "vue": "^2.3.0",
+    "vue-resource": "^1.3.1"
+  },
+  "devDependencies": {
+    "gulp-plumber": "^1.1.0"
+  }
+}
