@@ -1,179 +1,18 @@
 (function (Vue) {
+    // 定义一个模板获取函数
     var loadTemplate = function (name) {
         return document.getElementById(name + '_temp').innerHTML;
     }
     // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
-
     // 1. 定义（路由）组件。
     // 可以从其他文件 import 进来
-    var songs = [{
-        "id": 1,
-        "name": "Knockin' On Heaven's Door",
-        "artist": "Guns N' Roses",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/Guns N' Roses - Knockin' On Heaven's Door.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/Guns N' Roses.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/Guns N' Roses - Knockin' On Heaven's Door.lrc"
-    }, {
-        "id": 2,
-        "name": "I Will Be Your Shelter",
-        "artist": "Rebecca Blaylock",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/Rebecca Blaylock - I Will Be Your Shelter.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/Rebecca Blaylock.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/Rebecca Blaylock - I Will Be Your Shelter.lrc"
-    }, {
-        "id": 3,
-        "name": "我恨我痴心",
-        "artist": "刘德华",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/刘德华 - 我恨我痴心.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/刘德华.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/刘德华 - 我恨我痴心.lrc"
-    }, {
-        "id": 4,
-        "name": "不说再见",
-        "artist": "好妹妹乐队",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/好妹妹乐队 - 不说再见.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/好妹妹乐队.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/好妹妹乐队 - 不说再见.lrc"
-    }, {
-        "id": 5,
-        "name": "青城山下白素贞",
-        "artist": "好妹妹乐队",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/好妹妹乐队 - 青城山下白素贞.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/好妹妹乐队.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/好妹妹乐队 - 青城山下白素贞.lrc"
-    }, {
-        "id": 6,
-        "name": "送情郎(2010.12.11 德云二队张一元晚场)",
-        "artist": "岳云鹏",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/岳云鹏 - 送情郎(2010.12.11 德云二队张一元晚场).mp3",
-        "poster": "http://127.0.0.1:2080/uploads/岳云鹏.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/岳云鹏 - 送情郎(2010.12.11 德云二队张一元晚场).lrc"
-    }, {
-        "id": 7,
-        "name": "往事只能回味",
-        "artist": "岳云鹏,宋小宝",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/岳云鹏,宋小宝 - 往事只能回味.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/岳云鹏,宋小宝.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/岳云鹏,宋小宝 - 往事只能回味.lrc"
-    }, {
-        "id": 8,
-        "name": "天梯(Live) - live",
-        "artist": "张智霖",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/张智霖 - 天梯(Live) - live.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/张智霖.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/张智霖 - 天梯(Live) - live.lrc"
-    }, {
-        "id": 9,
-        "name": "友情岁月",
-        "artist": "李克勤",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/李克勤 - 友情岁月.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/李克勤.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/李克勤 - 友情岁月.lrc"
-    }, {
-        "id": 10,
-        "name": "合久必婚",
-        "artist": "李克勤",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/李克勤 - 合久必婚.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/李克勤.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/李克勤 - 合久必婚.lrc"
-    }, {
-        "id": 11,
-        "name": "天梯",
-        "artist": "李克勤",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/李克勤 - 天梯.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/李克勤.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/李克勤 - 天梯.lrc"
-    }, {
-        "id": 12,
-        "name": "爱不释手",
-        "artist": "李克勤",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/李克勤 - 爱不释手.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/李克勤.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/李克勤 - 爱不释手.lrc"
-    }, {
-        "id": 13,
-        "name": "飞花",
-        "artist": "李克勤",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/李克勤 - 飞花.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/李克勤.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/李克勤 - 飞花.lrc"
-    }, {
-        "id": 14,
-        "name": "充满希望",
-        "artist": "玛莉亚",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/玛莉亚 - 充满希望.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/玛莉亚.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/玛莉亚 - 充满希望.lrc"
-    }, {
-        "id": 15,
-        "name": "友谊之光",
-        "artist": "玛莉亚",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/玛莉亚 - 友谊之光.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/玛莉亚.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/玛莉亚 - 友谊之光.lrc"
-    }, {
-        "id": 16,
-        "name": "老中医",
-        "artist": "花粥",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/花粥 - 老中医.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/花粥.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/花粥 - 老中医.lrc"
-    }, {
-        "id": 17,
-        "name": "静静的看着你装逼",
-        "artist": "花粥&四四",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/花粥&四四 - 静静的看着你装逼.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/花粥&四四.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/花粥&四四 - 静静的看着你装逼.lrc"
-    }, {
-        "id": 18,
-        "name": "也曾相识",
-        "artist": "谭咏麟",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/谭咏麟 - 也曾相识.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/谭咏麟.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/谭咏麟 - 也曾相识.lrc"
-    }, {
-        "id": 19,
-        "name": "夏日寒风",
-        "artist": "谭咏麟",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/谭咏麟 - 夏日寒风.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/谭咏麟.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/谭咏麟 - 夏日寒风.lrc"
-    }, {
-        "id": 20,
-        "name": "雾之恋",
-        "artist": "谭咏麟",
-        "duration": 342,
-        "music": "http://127.0.0.1:2080/uploads/谭咏麟 - 雾之恋.mp3",
-        "poster": "http://127.0.0.1:2080/uploads/谭咏麟.jpg",
-        "lyric": "http://127.0.0.1:2080/uploads/谭咏麟 - 雾之恋.lrc"
-    }]
     var Home = {
         // 这是模板，点击后跳转为这个模板
         template: loadTemplate('home')
     }
     var List = {
-        // jsonp跨域
         template: loadTemplate('list'),
+        // jsonp跨域
         data: function () {
             this.$http.jsonp('http://localhost:2080/api/music')
             .then(res =>{
@@ -185,23 +24,37 @@
             }
         }
     }
-
     var Item = {
         template: loadTemplate('item'),
-        data: function(){
+        data: function () {    
             return {
-                // item: params.id
-
-                // console.log(items);
+                item: []
             }
         },
-       
+        //路由守卫，进入路由前做的事情
+        beforeRouteEnter (to, from, next) {
+            // 在渲染该组件的对应路由被 confirm 前调用
+            // 不！能！获取组件实例 `this`
+            // 因为当守卫执行前，组件实例还没被创建
+            // 获得路由的id
+            var id = parseInt( to.params.id);
+            // 因为不能使用this，用next的vm代替
+            next(vm=>{
+                vm.$http.jsonp('http://localhost:2080/api/music/' + id)
+                .then(res =>{
+                    // console.log(res.data);
+                    vm.item  = res.data;
+                })
+            })
+          }
     }
     // 2. 定义路由
     // 每个路由应该映射一个组件。 其中"component" 可以是
     // 通过 Vue.extend() 创建的组件构造器，
     // 或者，只是一个组件配置对象。
     // 我们晚点再讨论嵌套路由。
+
+    // 可以理解为路由和组件映射的关系
     var routes = [{
             path: '/home',
             // name : "home",
@@ -209,12 +62,13 @@
         },
         {
             path: '/songs',
-            component: List
+            component: List,
         },
         {
             // name:'item',
             path: '/songs/:id',
-            component: Item
+            component: Item,
+            name:"item"
         },
         {
             path: '/*',
@@ -234,5 +88,4 @@
     var app = new Vue({
         router
     }).$mount('#app')
-
 })(Vue)
